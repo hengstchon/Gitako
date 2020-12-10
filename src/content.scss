@@ -16,6 +16,11 @@ $min-width-with-gitako: $min-screen-width + $side-bar-base-width;
 $github-header-z-index: 32;
 $github-pull-request-float-header-z-index: 110;
 $minimal-z-index: max($github-header-z-index, $github-pull-request-float-header-z-index) + 1;
+$bg-color: #0d1117;
+$bg-color-secondary: #21262d;
+$bg-color-tertiary: #161b22;
+$text-color: #c9d1d9;
+$text-link: #58a6ff;
 
 :root {
   --gitako-width: #{$side-bar-base-width};
@@ -101,14 +106,14 @@ $minimal-z-index: max($github-header-z-index, $github-pull-request-float-header-
     .clippy {
       width: 32px;
       height: 32px;
-      border: 1px solid $border-gray-dark;
+      border: 1px solid $border-gray-darker;
       border-radius: 4px;
-      background: $bg-gray-light;
+      background: $gray-300;
       &:hover {
-        background: $bg-white;
+        background: $gray-600;
       }
       &:active {
-        background: $bg-gray-light;
+        background: $gray-600;
       }
       .icon {
         width: 100%;
@@ -154,12 +159,12 @@ $minimal-z-index: max($github-header-z-index, $github-pull-request-float-header-
 
 @mixin button-color {
   border: none;
-  background: $gray-000;
+  background: $bg-color;
   &:hover {
-    background: $gray-200;
+    background: $bg-color-secondary;
   }
   &:active {
-    background: $gray-300;
+    background: $bg-color-tertiary;
   }
 }
 
@@ -267,14 +272,14 @@ $minimal-z-index: max($github-header-z-index, $github-pull-request-float-header-
     user-select: none;
     width: 0;
     background: $bg-gray;
-    border-right: 1px solid $border-gray-dark;
+    border-right: 1px solid $border-gray-darker;
     overflow: hidden;
     box-sizing: content-box;
     &:hover,
     &:active {
       width: 16px;
-      background: $bg-gray-light;
-      border-left: 1px solid $border-gray-dark;
+      background: $bg-color;
+      border-left: 1px solid $border-gray-darker;
     }
 
     .octicon.Grabber {
@@ -288,8 +293,8 @@ $minimal-z-index: max($github-header-z-index, $github-pull-request-float-header-
     height: 100%;
     display: flex;
     flex-direction: column;
-    background: $bg-gray-light;
-    border-left: 1px solid $border-gray;
+    background: $bg-color;
+    border-left: 1px solid $border-gray-darker;
     overflow: hidden;
 
     &.hidden {
@@ -298,7 +303,7 @@ $minimal-z-index: max($github-header-z-index, $github-pull-request-float-header-
 
     .octicon {
       transition: transform 0.3s ease;
-      color: rgba($blue-800, 0.55);
+      color: rgba($text-color, 0.55);
       width: 100%;
       height: 100%;
     }
@@ -331,7 +336,7 @@ $minimal-z-index: max($github-header-z-index, $github-pull-request-float-header-
           flex-shrink: 0;
           padding: 8px 10px;
           padding-right: $button-size + 8px * 2; // space for toggle button
-          background: $gray-000;
+          background: $bg-color;
         }
 
         .close-side-bar-button-position {
@@ -348,6 +353,7 @@ $minimal-z-index: max($github-header-z-index, $github-pull-request-float-header-
             height: $button-size;
             border-radius: $button-size;
             transition: background linear 0.3s;
+            background: $bg-color;
 
             .action-icon {
               color: $gray;
@@ -415,6 +421,11 @@ $minimal-z-index: max($github-header-z-index, $github-pull-request-float-header-
             width: 100%;
             box-shadow: none; // stay low
             border-radius: 0; // its rounded corner not match with nearby elements
+            border-color: $border-gray-darker;
+            border-left: none;
+            border-right: none;
+            color: $text-color;
+            background: $bg-color;
 
             &.error {
               border-color: $red;
@@ -429,13 +440,13 @@ $minimal-z-index: max($github-header-z-index, $github-pull-request-float-header-
         }
 
         .node-item {
-          background: $bg-white;
+          background: $bg-color;
           &:hover {
-            background: $bg-gray-light;
+            background: $bg-color-secondary;
           }
           &.focused,
           &:active {
-            background: $bg-gray;
+            background: $bg-color-secondary;
           }
 
           &.disabled {
@@ -447,11 +458,11 @@ $minimal-z-index: max($github-header-z-index, $github-pull-request-float-header-
           display: flex;
           justify-content: space-between;
           margin: 0;
-          color: $blue;
+          color: $text-link;
           line-height: 18px;
           padding: 9px 10px;
           cursor: pointer;
-          border-bottom: 1px solid $border-gray-light;
+          border-bottom: 1px solid $border-gray-darker;
           white-space: nowrap;
           transition: padding 0.3s ease; // on toggle expansion in search results
 
@@ -514,12 +525,12 @@ $minimal-z-index: max($github-header-z-index, $github-pull-request-float-header-
 
     .#{$name}-settings-bar {
       z-index: 2;
-      background: $bg-gray-light;
+      background: $bg-color;
       display: flex;
       flex-direction: column;
       max-height: calc(100vh - 120px);
       &-title {
-        border-top: 1px solid $border-gray-light;
+        border-top: 1px solid $border-gray-darker;
         padding: 10px;
         box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14),
           0 3px 3px -2px rgba(0, 0, 0, 0.12);
@@ -537,7 +548,7 @@ $minimal-z-index: max($github-header-z-index, $github-pull-request-float-header-
           height: 10px;
           top: 0;
           left: 0;
-          background: $bg-gray-light;
+          background: $bg-color;
           z-index: 1;
         }
         .settings-section {
@@ -615,7 +626,7 @@ $minimal-z-index: max($github-header-z-index, $github-pull-request-float-header-
         justify-content: space-between;
         align-items: center;
         padding: 2px 6px 2px 10px;
-        border-top: 1px solid $border-gray-light;
+        border-top: 1px solid $border-gray-darker;
 
         .header-right {
           display: flex;
@@ -631,6 +642,7 @@ $minimal-z-index: max($github-header-z-index, $github-pull-request-float-header-
           width: $size;
           height: $size;
           border-radius: $size;
+          background: $bg-color;
 
           .octicon-wrapper {
             width: 18px;
