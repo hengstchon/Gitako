@@ -45,3 +45,10 @@ compress-env:
 
 compress-icons-into-source-for-mz-review:
 	zip -r dist/source-$(FULL_VERSION).zip vscode-icons/icons
+
+dark-mode:
+	yarn install
+	$(MAKE) build
+	$(MAKE) pull-icons
+	mv vscode-icons/icons dist/icons/vscode
+	$(MAKE) compress
